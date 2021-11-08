@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bestelling extends Model
+class Voorraad extends Model
 {
-    protected $table = 'bestelling';
-    protected $primaryKey = 'Bestellingnummer';
+    protected $table = 'voorraad';
+    protected $primaryKey = 'Eenheid';
     public $timestamps = false;
     use HasFactory;
 }

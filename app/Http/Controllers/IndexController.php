@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Bestelling;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,10 +15,16 @@ class IndexController extends Controller
         {
             $result = null;
             if (Auth::user()->Rol == 'Picker') {
-                $result = Bestelling::all();
+                $result = DB::table('bestelling')
+                ->join('klant', 'klant.klantnummer', '=', 'bestelling.klantnummer')
+                ->select('bestelling.*', 'klant.*')
+                ->get();
             }
             elseif (Auth::user()->Rol == 'Verkoper'){
-                $result = Bestelling::all();
+                $result = DB::table('bestelling')
+                    ->join('klant', 'klant.klantnummer', '=', 'bestelling.klantnummer')
+                    ->select('bestelling.*', 'klant.*')
+                    ->get();
             }
             elseif (Auth::user()->Rol == 'Voorraadmanager'){
                 $result = Artikel::all();

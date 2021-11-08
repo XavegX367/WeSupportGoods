@@ -71,14 +71,6 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">Inloggen</button>
                                 </form>
-                                <hr>
-                                @if (Route::has('password.request'))
-                                    <div class="text-center">
-                                        <a class="small" href="{{ route('password.request') }}">
-                                            {{ __('Wachtwoord vergeten?') }}
-                                        </a>
-                                    </div>
-                                @endif
                             </div>
                         </div>
                     </div>

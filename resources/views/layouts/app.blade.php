@@ -27,6 +27,23 @@
 
 <body id="page-top">
 
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Datatables -->
+<script src="js/datatables.min.js"></script>
+<script src="js/datatables.js"></script>
+<script src="js/Dashboard.js"></script>
+
+<script src="js/Datatables/DashboardTables.js"></script>
+
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -72,7 +89,7 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
+            @if(\Illuminate\Support\Facades\Auth::check())
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -98,7 +115,7 @@
                 </ul>
             </nav>
             <!-- End of Topbar -->
-
+            @endif
             @yield('content')
 
         <!-- Footer -->
@@ -149,30 +166,6 @@
         </div>
     </div>
 </div>
-
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Datatables -->
-<script src="js/datatables.min.js"></script>
-<script src="js/datatables.js"></script>
-
-<script src="js/Datatables/DashboardTables.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>
