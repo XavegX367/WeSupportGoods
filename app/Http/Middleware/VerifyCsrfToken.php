@@ -14,5 +14,10 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'updatepickproduct',
         'pickercompleteorder',
+        'verkopersaveproduct',
+        'savenewcustomer',
+        'saveneworder',
+        'savenewproductline',
+        'verkoperremoveproduct',
     ];
 }

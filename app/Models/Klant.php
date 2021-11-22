@@ -9,5 +9,6 @@ class Klant extends Model
 {
     protected $table = 'klant';
     protected $primaryKey = 'Klantnummer';
+    public $timestamps = false;
     use HasFactory;
 }

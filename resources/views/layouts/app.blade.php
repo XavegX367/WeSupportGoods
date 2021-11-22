@@ -40,9 +40,14 @@
 <!-- Datatables -->
 <script src="js/datatables.min.js"></script>
 <script src="js/datatables.js"></script>
-<script src="js/Dashboard.js"></script>
+<script src="js/Picker.js"></script>
+<script src="js/Verkoper.js"></script>
+<script src="js/Voorraad.js"></script>
 
 <script src="js/Datatables/DashboardTables.js"></script>
+
+<!-- Sweet alert2 -->
+<script src="js/sweetalert2.js"></script>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -67,11 +72,6 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
 
     </ul>
     <!-- End of Sidebar -->

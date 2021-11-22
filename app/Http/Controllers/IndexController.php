@@ -18,6 +18,7 @@ class IndexController extends Controller
                 $result = DB::table('bestelling')
                 ->join('klant', 'klant.klantnummer', '=', 'bestelling.klantnummer')
                 ->select('bestelling.*', 'klant.*')
+                ->where('Afgerond', '=', '0')
                 ->get();
             }
             elseif (Auth::user()->Rol == 'Verkoper'){

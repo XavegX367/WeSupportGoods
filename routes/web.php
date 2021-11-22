@@ -21,5 +21,15 @@ Route::post('updatepickproduct', [PickerController::class, 'PickProduct']);
 Route::post('pickercompleteorder', [PickerController::class, 'CompleteOrder']);
 
 Route::get('verkoper/{id}', [VerkoperController::class, 'GetOrderRows']);
+Route::post('verkopersaveproduct', [VerkoperController::class, 'SaveProduct']);
+Route::post('verkoperremoveproduct', [VerkoperController::class, 'RemoveProduct']);
+Route::post('savenewcustomer', [VerkoperController::class, 'SaveNewCustomer']);
+Route::post('saveneworder', [VerkoperController::class, 'SaveNewOrder']);
+Route::post('savenewproductline', [VerkoperController::class, 'SaveNewProductLine']);
+Route::get('getcustomers', [VerkoperController::class, 'GetCustomers']);
+Route::get('getproducts', [VerkoperController::class, 'Getproducts']);
+Route::get('getproductdetails/{id}', [VerkoperController::class, 'GetProductDetails']);
+Route::get('loadproductlocation/{artikelnummer}/{eenheid}', [VerkoperController::class, 'LoadProductLocation']);
+Route::get('refreshsellertable', [VerkoperController::class, 'RefreshSellerTable']);
 
 Auth::routes();
