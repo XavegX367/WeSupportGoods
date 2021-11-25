@@ -19,5 +19,9 @@ class VerifyCsrfToken extends Middleware
         'saveneworder',
         'savenewproductline',
         'verkoperremoveproduct',
+        'saveneweenheid',
+        'savevoorraadedit',
+        'savenewproduct',
+        'saveartikeledit',
     ];
 }

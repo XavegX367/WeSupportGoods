@@ -82,7 +82,12 @@
                 </div>
             <!-- Voorraad Table -->
             @elseif (\Illuminate\Support\Facades\Auth::user()->Rol == 'Voorraadmanager')
-                Voorraad
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button data-toggle="modal" data-target="#NewProductModal" class="btn btn-success"><i class="far fa-plus-square"></i> Nieuw Artikel</button>
+                    </div>
+                </div>
+            <br>
                 <table id="VoorraadTable">
                     <thead>
                     <th>Artikelnummer</th>
@@ -90,16 +95,15 @@
                     <th>Prijs</th>
                     <th>Acties</th>
                     </thead>
-                    <tbody>
+                    <tbody id="voorraadTableBody">
                     @foreach($results as $result)
                         <tr>
                             <td>{{$result->Artikelnummer}}</td>
-                            <td>{{$result->Omschrijving}}</td>
-                            <td>€{{$result->Prijs}}</td>
-                            <td>
-                                <button class="btn btn-success" id="btnEditProductLine"><i class="fas fa-edit"></i></button>
+                            <td id="tdArtikelOmschrijving{{$result->Artikelnummer}}">{{$result->Omschrijving}}</td>
+                            <td id="tdArtikelPrijs{{$result->Artikelnummer}}">€{{$result->Prijs}}</td>
+                            <td id="tdArtikelButtons{{$result->Artikelnummer}}">
+                                <button class="btn btn-success" onclick="EditArtikel({{$result->Artikelnummer}})" id="btnEditProductLine"><i class="fas fa-edit"></i></button>
                                 <button type="button" data-toggle="modal" data-target="#VoorraadModal" class="btn btn-primary" id="btnWatchProduct" onclick="SendDataToVoorraadModal({{$result->Artikelnummer}}, '{{$result->Omschrijving}}')"><i class="fas fa-eye"></i></button>
-                                <button class="btn btn-danger" id="btnWatchProduct"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -310,9 +314,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                Artikelnummer: <span id="VoorraadArtikelNummer"></span><br>
-                Omschrijving: <span id="VoorraadArtikelOmschrijving"></span><br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        Artikelnummer: <span id="VoorraadArtikelNummerModal"></span><br>
+                        Omschrijving: <span id="VoorraadArtikelOmschrijvingModal"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <button id="btnNewEenheid" class="btn btn-success"><i class="far fa-plus-square"></i> Eenheid toevoegen</button>
+                    </div>
+                </div>
                 <!-- TODO: Hier bestelgegevens inladen -->
+
                 <table id="ArtikelVoorraad" class="table table-striped">
                     <thead>
                     <th>Eenheid</th>
@@ -330,6 +342,37 @@
     </div>
 </div>
 
+<!-- Nieuw Product Modal -->
+<div class="modal fade" id="NewProductModal" tabindex="-1" role="dialog" aria-labelledby="NewProductModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="NewProductModalLongTitle">Nieuw product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="bedrijfsnaam">Omschrijving</label>
+                            <input required class="form-control" type="text" id="omschrijving" name="omschrijving">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactpersoon">Prijs</label>
+                            <input required class="form-control" type="number" id="prijs" name="prijs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SaveNewProduct()">Opslaan</button>
+                <button type="button" class="btn btn-danger" onclick="CancelNewProduct()">Sluiten</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- /.container-fluid -->
 @endsection

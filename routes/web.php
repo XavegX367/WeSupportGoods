@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PickerController;
 use App\Http\Controllers\VerkoperController;
+use App\Http\Controllers\VoorraadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,12 @@ Route::get('getproducts', [VerkoperController::class, 'Getproducts']);
 Route::get('getproductdetails/{id}', [VerkoperController::class, 'GetProductDetails']);
 Route::get('loadproductlocation/{artikelnummer}/{eenheid}', [VerkoperController::class, 'LoadProductLocation']);
 Route::get('refreshsellertable', [VerkoperController::class, 'RefreshSellerTable']);
+
+Route::get('/voorraad/{id}', [VoorraadController::class, 'GetVoorraad']);
+Route::post('saveneweenheid', [VoorraadController::class, 'SaveNewEenheid']);
+Route::post('savevoorraadedit', [VoorraadController::class, 'SaveVoorraadEdit']);
+Route::post('savenewproduct', [VoorraadController::class, 'SaveNewProduct']);
+Route::post('saveartikeledit', [VoorraadController::class, 'SaveArtikelEdit']);
+Route::get('refreshvoorraadtable', [VoorraadController::class, 'RefreshVoorraadTable']);
 
 Auth::routes();

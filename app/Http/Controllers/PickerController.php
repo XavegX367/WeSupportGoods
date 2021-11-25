@@ -13,7 +13,9 @@ class PickerController extends Controller
     public function GetOrderRows($id){
         $artikelen = DB::table('bestellingregel')
             ->join('artikel', 'artikel.artikelnummer', '=', 'bestellingregel.artikelnummer')
-            ->join('voorraad', 'voorraad.artikelId', '=', 'bestellingregel.Artikelnummer')
+            ->join('voorraad', function ($join) {
+                $join->on('voorraad.eenheid', '=', 'bestellingregel.eenheid')->On('voorraad.artikelId', '=', 'bestellingregel.artikelnummer');
+            })
             ->where('bestellingnummer', '=', $id)
             ->select('bestellingregel.*', 'artikel.*', 'voorraad.locatie', 'voorraad.Aantal as inStock')
             ->get();

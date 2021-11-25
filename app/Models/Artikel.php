@@ -9,5 +9,6 @@ class Artikel extends Model
 {
     protected $table = 'artikel';
     protected $primaryKey = 'Artikkelnummer';
+    public $timestamps = false;
     use HasFactory;
 }

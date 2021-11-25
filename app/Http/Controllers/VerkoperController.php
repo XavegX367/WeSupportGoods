@@ -15,24 +15,13 @@ class VerkoperController extends Controller
     public function GetOrderRows($id){
         $artikelen = DB::table('bestellingregel')
             ->join('artikel', 'artikel.artikelnummer', '=', 'bestellingregel.artikelnummer')
-            ->join('voorraad', 'voorraad.eenheid', '=', 'bestellingregel.eenheid')
+            ->join('voorraad', function ($join) {
+                $join->on('voorraad.eenheid', '=', 'bestellingregel.eenheid')->On('voorraad.artikelId', '=', 'bestellingregel.artikelnummer');
+            })
             ->where('bestellingnummer', '=', $id)
-            ->select('bestellingregel.*', 'artikel.*', 'voorraad.locatie', 'voorraad.Aantal as inStock')
+            ->select('bestellingregel.*', 'artikel.*', 'voorraad.locatie', 'voorraad.Aantal as inStock', 'voorraad.artikelId as voorraadartikel')
             ->get();
         return json_encode($artikelen);
-    }
-
-    public function PickProduct(Request $request){
-        BestelRegel::where('BestelRegelId', $request->id)->update([
-            'Picked' => 1
-        ]);
-
-        $aantal = Voorraad::where('Eenheid', $request->eenheid)->first();
-        $newStock = $aantal->Aantal - $request->aantal;
-
-        Voorraad::where('Eenheid', $request->eenheid)->update([
-            'Aantal' => $newStock
-        ]);
     }
 
     public  function SaveProduct(Request $request)

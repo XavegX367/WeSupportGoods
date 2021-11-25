@@ -110,7 +110,7 @@ const AbortEdit = (id) => {
     document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVAantal${id}">${Aantal}</td>`;
     document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVEenheid${id}">${Eenheid}</td>`;
     document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVLocatie${id}">${Locatie}</td>`;
-    document.getElementById('trVerkoper'+id).innerHTML += `<td id="orderItem${id}"><button class='btn btn-info' onclick='EditProduct(${id})'><i class="fas fa-edit"></i></button> <button class='btn btn-danger' onclick='RemoveProduct(${id})'><i class="fas fa-trash"></i></button></td>`;
+    document.getElementById('trVerkoper'+id).innerHTML += `<td id="orderItem${id}"><button class='btn btn-info' onclick='EditProduct(${id})'><i class="fas fa-edit"></i></button> <button class='btn btn-danger' onclick='RemoveProduct(${id})'><i class="fas fa-times"></i></button></td>`;
 }
 
 const SaveNewCustomer = () => {
