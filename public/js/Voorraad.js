@@ -140,7 +140,7 @@ const RefreshVoorraadTable = async () => {
     let data = await response.json();
     for (let i =0; i < data.length; i++)
     {
-        tbody.innerHTML += `<tr id="tr${data[i].Artikelnummer}"><td>${data[i].Artikelnummer}</td><td>${data[i].Omschrijving}</td><td>€${data[i].Prijs}</td><td><button class="btn btn-success" onclick="EditArtikel(${data[i].Artikelnummer})" id="btnEditProductLine"><i class="fas fa-edit"></i></button> <button type="button" data-toggle="modal" data-target="#VoorraadModal" class="btn btn-primary" id="btnWatchProduct" onclick="SendDataToVoorraadModal(${data[i].Artikelnummer}, '${data[i].Omschrijving}')"><i class="fas fa-eye"></i></button></td>`
+        tbody.innerHTML += `<tr id="tr${data[i].Artikelnummer}"><td>${data[i].Artikelnummer}</td><td id="tdArtikelOmschrijving${data[i].Artikelnummer}">${data[i].Omschrijving}</td><td id="tdArtikelPrijs${data[i].Artikelnummer}">€${data[i].Prijs}</td><td id="tdArtikelButtons${data[i].Artikelnummer}"><button class="btn btn-success" onclick="EditArtikel(${data[i].Artikelnummer})" id="btnEditProductLine"><i class="fas fa-edit"></i></button> <button type="button" data-toggle="modal" data-target="#VoorraadModal" class="btn btn-primary" id="btnWatchProduct" onclick="SendDataToVoorraadModal(${data[i].Artikelnummer}, '${data[i].Omschrijving}')"><i class="fas fa-eye"></i></button></td>`
     }
 }
 
