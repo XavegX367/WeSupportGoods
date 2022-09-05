@@ -77,7 +77,7 @@ const EditProduct = async (id, artikelnummer) => {
     document.getElementById('trVerkoper' + id).innerHTML += `<td><input type='number' id='inputAantal${id}' class="form-control" value="${Aantal}"></td>`;
     document.getElementById('trVerkoper' + id).innerHTML += `<td><select class="form-control" id="eenheidSelect"></select></td>`;
     document.getElementById('trVerkoper' + id).innerHTML += `<td>${Locatie}</td>`;
-    document.getElementById('trVerkoper' + id).innerHTML += `<td><button onclick="SaveProduct(${id})" class="btn btn-success"><i class="far fa-save"></i></button><button onclick="AbortEdit(${id})" class="btn btn-danger"><i class="fas fa-times"></i></button></td>`;
+    document.getElementById('trVerkoper' + id).innerHTML += `<td><button onclick="SaveProduct(${id})" class="btn btn-success"><i class="far fa-save"></i></button><button onclick="AbortEdit()" class="btn btn-danger"><i class="fas fa-times"></i></button></td>`;
     const eenheidSelect = document.getElementById('eenheidSelect');
     const response = await fetch(`/getproductdetails/${artikelnummer}`);
     let data = await response.json();
@@ -102,15 +102,11 @@ const SaveProduct = (id) => {
         method: 'post',
         body: formdata,
     })
-    AbortEdit(id);
+    AbortEdit();
 }
 
-const AbortEdit = (id) => {
-    document.getElementById('trVerkoper'+id).innerHTML = `<td id="tdVOmschrijving${id}">${Omschrijving}</td>`;
-    document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVAantal${id}">${Aantal}</td>`;
-    document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVEenheid${id}">${Eenheid}</td>`;
-    document.getElementById('trVerkoper'+id).innerHTML += `<td id="tdVLocatie${id}">${Locatie}</td>`;
-    document.getElementById('trVerkoper'+id).innerHTML += `<td id="orderItem${id}"><button class='btn btn-info' onclick='EditProduct(${id})'><i class="fas fa-edit"></i></button> <button class='btn btn-danger' onclick='RemoveProduct(${id})'><i class="fas fa-times"></i></button></td>`;
+const AbortEdit = () => {
+    SendDataToVerkoperModal(bestelnummer, bedrijf, contact, tel, mail);
 }
 
 const SaveNewCustomer = () => {

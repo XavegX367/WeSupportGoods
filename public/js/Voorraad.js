@@ -106,8 +106,7 @@ const SaveVoorraadEdit = (id) => {
 }
 
 const CancelEditVoorraad = (id) => {
-    const row = document.getElementById('trVoorraad'+id);
-    row.innerHTML = `<td>${voorraadEenheid}</td><td>${voorraadAantal}</td><td>${voorraadLocatie}</td><td><button class='btn btn-info' onclick='EditVoorraad(${id})'><i class="fas fa-edit"></i></button></td>`
+    SendDataToVoorraadModal(artikelnummerCurrent, omschrijvingCurrent);
 }
 
 const SaveNewProduct = () => {
