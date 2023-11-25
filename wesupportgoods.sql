@@ -196,7 +196,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `Rol`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Joris', 'joris367@gmail.com', NULL, '$2y$10$erM8hVg.eyb0poJeO8z/e./aWzSnX1fRnsi2WxMFQw4BzHfBBWCyG', 'Picker', NULL, '2021-11-03 07:51:03', '2021-11-03 07:51:03'),
+(1, 'Picker', 'picker@wsg.nl', NULL, '$2y$10$erM8hVg.eyb0poJeO8z/e./aWzSnX1fRnsi2WxMFQw4BzHfBBWCyG', 'Picker', NULL, '2021-11-03 07:51:03', '2021-11-03 07:51:03'),
 (2, 'Verkoper', 'verkoper@wsg.nl', NULL, '$2y$10$ZZNvprEhBQpuuKSA6VtBGexHDYkvNVXPmFER4/L9q6dHOB3kSHJAy', 'Verkoper', NULL, '2021-11-05 07:57:54', '2021-11-05 07:57:54'),
 (3, 'Voorraadmanager', 'voorraad@wsg.nl', NULL, '$2y$10$bS6f7t2aW9att8zYJvDzsePnOZr6h9ms1CCTFjuHRV./TNS1t23Ge', 'Voorraadmanager', NULL, '2021-11-05 07:59:01', '2021-11-05 07:59:01');
 
@@ -210,14 +210,15 @@ CREATE TABLE `voorraad` (
   `Eenheid` varchar(255) NOT NULL,
   `Aantal` int(11) NOT NULL,
   `Locatie` varchar(255) NOT NULL
+  `ArtikelId` int        NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `voorraad`
 --
 
-INSERT INTO `voorraad` (`Eenheid`, `Aantal`, `Locatie`) VALUES
-('1', 32, 'Eindhoven');
+INSERT INTO `voorraad` (`Eenheid`, `Aantal`, `Locatie`, `ArtikelId`) VALUES
+('Pallet', 32, 'Eindhoven', '1');
 
 --
 -- Indexes for dumped tables
